@@ -1,0 +1,28 @@
+# R session files
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.DS_Store
+
+# Raw data (if sensitive)
+data_raw/*
+
+# Processed training/testing data (optional)
+data_processed/*
+
+# Model outputs (heavy files)
+results/models/*
+
+# Allow only the main RF model for Shiny demo
+!results/models/rf_model.rds
+
+# Intermediate tables generated automatically
+results/tables/*
+!results/tables/subject_performance.rds
+!results/tables/enrollment_reason_performance.rds
+!results/tables/segment_performance.rds
+!results/tables/model_comparison.rds
+
+# Insight plots – ignore large binaries
+results/insights
