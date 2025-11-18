@@ -1,0 +1,26 @@
+{
+    "id": "88984F23",
+    "path": "~/student-success-prediction-r/scripts/06_gbm_modeling.R",
+    "project_path": "scripts/06_gbm_modeling.R",
+    "type": "r_source",
+    "hash": "2896674440",
+    "contents": "",
+    "dirty": true,
+    "created": 1763435964316.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "43,0",
+        "scrollLine": "19"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1763435462,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1763436014286,
+    "read_only": false,
+    "read_only_alternatives": []
+}
