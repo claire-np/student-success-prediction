@@ -1,0 +1,25 @@
+─ Session info ──────────────────────────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.5.1 (2025-06-13)
+ os       macOS Sequoia 15.6.1
+ system   aarch64, darwin20
+ ui       RStudio
+ language (EN)
+ collate  en_US.UTF-8
+ ctype    en_US.UTF-8
+ tz       America/New_York
+ date     2025-11-17
+ rstudio  2025.09.1+401 Cucumberleaf Sunflower (desktop)
+ pandoc   NA
+ quarto   1.7.32 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/quarto
+
+─ Packages ──────────────────────────────────────────────────────────────────────────────────────
+ package     * version date (UTC) lib source
+ cli           3.6.5   2025-04-23 [1] CRAN (R 4.5.0)
+ rstudioapi    0.17.1  2024-10-22 [1] CRAN (R 4.5.0)
+ sessioninfo * 1.2.3   2025-02-05 [1] CRAN (R 4.5.0)
+
+ [1] /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library
+ * ── Packages attached to the search path.
+
+─────────────────────────────────────────────────────────────────────────────────────────────────
