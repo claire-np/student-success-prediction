@@ -6,9 +6,7 @@
 
 ## 1. Project Overview
 
-Drawing on my experience studying within LMS environments and working in EdTech, I became increasingly interested in how students’ digital behaviors can reveal early signs of academic difficulty. Prior research highlights motivation, engagement, and discourse as strong predictors of learning outcomes in online settings.
-
-This project examines whether we can predict final grades early in fully online middle-school science courses using four major categories of signals:
+Drawing on my experience studying within LMS environments and working in EdTech, I became increasingly interested in how students’ digital behaviors can reveal early signs of academic difficulty. This project examines whether we can predict final grades early in fully online middle-school science courses using four major categories of signals:
 
 - **Behavioral data from the LMS** (time on task, engagement ratio)  
 - **Linguistic signals** from discussion posts (cognitive, social, emotional language)  
@@ -42,16 +40,16 @@ The dataset has been used previously to illustrate an introductory random forest
 
 ## 3. Key Questions for Educators
 
-- **Early Warning:**  
+- **Early warning:**  
   Can we reliably flag students who are likely to fall below a passing threshold early enough for intervention, rather than after the final grade is determined?
 
-- **Drivers of Success:**  
+- **Drivers of success:**  
   Which behaviors, motivation patterns, and language signals consistently differentiate high-performing students from those who struggle?
 
-- **Instructional Equity:**  
+- **Instructional equity:**  
   Where do predictions vary across subjects, enrollment reasons, or motivation–engagement profiles, and what might this reveal about hidden barriers or unequal learning opportunities?
 
-- **Actionable Signals:**  
+- **Actionable signals:**  
   Which simple, interpretable metrics (e.g., early engagement dips, negative sentiment, low motivation × time) can be surfaced in dashboards for weekly monitoring by teachers and advisors?
 
 ---
@@ -93,7 +91,7 @@ Each was trained on an 80/20 stratified split to ensure fair evaluation.
 
 #### **Interpretation**
 
-- All models explain **~50–55%** of the variance in final course grades — a reasonable ceiling given behavioral, linguistic, and self-report features.  
+- All models explain ~50–55% of the variance in final course grades — a reasonable ceiling given behavioral, linguistic, and self-report features.  
 - Random Forest delivers the best overall performance.  
 - Gradient Boosting yields the lowest MAE.  
 - XGBoost underperforms, likely due to small sample size and noisy features.  
@@ -117,6 +115,11 @@ Across models, four behaviors consistently offer the strongest early indicators 
 - `motivation_score < 3.2` or `> 4.7` → highest variability  
 - `engagement_ratio < 20` or `> 150` → shallow vs inefficient  
 - `predicted_grade < 70` → reliable early risk indicator
+
+> **Figure 1. Random Forest Feature Importance**  
+> This plot highlights the strongest early indicators of student performance — with discussion activity (`n`) standing out as the dominant predictor.
+
+<img width="2380" height="1180" alt="Feature Importance" src="https://github.com/user-attachments/assets/b1334689-adb9-41ae-8356-f3f9d5885928" />
 
 ---
 
@@ -142,6 +145,12 @@ Even though the models perform reasonably well, they struggle with certain stude
 - Middle motivation × middle engagement students do “just enough” to stay unnoticed.
 
 ➡️ They rarely get help but contribute heavily to underperformance.
+
+> **Figure 2. Time Spent vs Final Grade (with Prediction Error Highlighted)**  
+> This visualization reveals where the model struggles most. Students who spend a large amount of time but earn low final grades (red points) represent “struggling hard-workers”—high-effort learners who need targeted instructional support, not more reminders to engage. These high-error cases illustrate why human judgment remains essential.
+
+<img width="2100" height="1200" alt="time_vs_grade_error" src="https://github.com/user-attachments/assets/3ac7786b-390c-4491-acf6-cf94ac5a4d04" />
+
 
 ---
 
@@ -181,7 +190,7 @@ After a student is flagged, teachers examine things the model cannot see:
 
 ## 9. Future Extensions
 
-This project is a strong first version, but there are several clear ways I would push it further in the future:
+This project is a first version, but there are several clear ways I would push it further in the future:
 
 - Adding assessment-level data, weekly pacing logs, or clickstream sequences would help capture how students learn, not just how often they interact.  
 - Week-by-week engagement and motivation trends would make early detection more realistic.  
@@ -195,7 +204,7 @@ This project is a strong first version, but there are several clear ways I would
 
 ## 10. Source Acknowledgment
 
-This project draws on the dataset from **Data Science in Education Using R**(by Ryan Estrellado, Emily A. Freer, Isabella C. Velásquez, Joshua M. Rosenberg, Jesse Mostipak), specifically the R package: `dataedu::sci_mo_with_text`
+This project draws on the dataset from **Data Science in Education Using R** (by Ryan Estrellado, Emily A. Freer, Isabella C. Velásquez, Joshua M. Rosenberg, Jesse Mostipak), specifically the R package: `dataedu::sci_mo_with_text`
 
 While the book provides an introductory Random Forest example, this repository represents a substantial technical and interpretive expansion.
 
