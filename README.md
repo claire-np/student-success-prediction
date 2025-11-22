@@ -66,7 +66,8 @@ This project transforms LMS, motivation, and linguistic data into features that 
 - engagement_ratio = proportion of course modules accessed  
 - emotion_balance = positive vs negative emotion in forum posts  
 - motivation_time = motivation_score × time_spent  
-- Encode categorical variables (subject, semester, enrollment_reason) as dummy variables.
+- Encode categorical variables (subject, semester, enrollment_reason) as dummy variables
+- n = number of discussion posts contributed by each student.
 
 #### **Modeling Approach**
 
@@ -96,7 +97,10 @@ Each was trained on an 80/20 stratified split to ensure fair evaluation.
 - Gradient Boosting yields the lowest MAE.  
 - XGBoost underperforms, likely due to small sample size and noisy features.  
 - Prediction error (~10 points on a 0–100 scale) is acceptable for early-warning, but not high-stakes decisions.  
-- Best practice: treat the model as **one supporting signal alongside teacher judgment.
+- Best practice: treat the model as **one supporting signal**, alongside teacher judgment.
+
+These results align with the performance ceiling reported in multimodal educational prediction literature, where behavioral and self-report features typically explain 45–60% of variance.
+
 
 ---
 
@@ -107,7 +111,7 @@ Across models, four behaviors consistently offer the strongest early indicators 
 - Discussion activity (n)— low posting is one of the simplest and strongest early warnings.  
 - Engagement level (engagement_ratio) — both shallow engagement and inefficient over-engagement appear in struggling students.  
 - Time on task (time_spent) — high time + low performance may indicate confusion.  
-- Motivation patterns — very low or very high motivation creates volatile outcomes.
+- Motivation patterns — very low or very high motivation_score creates volatile outcomes.
 
 #### **Data-driven thresholds**
 
@@ -115,6 +119,8 @@ Across models, four behaviors consistently offer the strongest early indicators 
 - `motivation_score < 3.2` or `> 4.7` → highest variability  
 - `engagement_ratio < 20` or `> 150` → shallow vs inefficient  
 - `predicted_grade < 70` → reliable early risk indicator
+
+(Based on percentile-capped values to reduce extreme outliers.)
 
 > **Figure 1. Random Forest Feature Importance**  
 > This plot highlights the strongest early indicators of student performance — with discussion activity (`n`) standing out as the dominant predictor.
@@ -168,7 +174,7 @@ These indicators consistently correlate with early risk:
 
 - Predicted grade < 70
 - Very low posting activity (e.g., fewer than 3–5 posts early in the course)
-- Unusually low or unusually high motivation (volatile performance patterns)
+- Unusually low or unusually high motivation_score (volatile performance patterns)
 
 ➡️ If a student shows one or more of these patterns, they are more likely to fall behind without timely support.
 
@@ -200,7 +206,7 @@ I see several realistic ways to strengthen this work in the future:
 
 - Incorporating weekly pacing logs or clickstream sequences to capture how students learn, not just how often.
 - Modeling week-by-week trends for earlier risk detection.
-- Adding mixed-effects or sequence models to reduce subject-specific errors.
+- Adding mixed-effects or sequence models to reduce subject-specific errors. Sequence-aware models (e.g., LSTM or temporal random forest) may better capture week-by-week learning dynamics, which are not represented in current aggregated features.
 
 ➡️ Ultimately, I aim to evolve this from a static prediction model into a lightweight, classroom-ready early-warning system that updates weekly and provides clearer, fairer signals for teachers.
 
